@@ -16,6 +16,7 @@ A companion **Log Distance Evaluation** tool (third-party metrics) is also inclu
 ├── main.py                      # Launch the quality assessment GUI
 ├── run_log_distance.py          # Launch the log distance evaluation GUI
 ├── requirements.txt             # Python dependencies
+├── LICENSE                      # Project licence
 ├── README.md                    # This file
 │
 │  ── Quality assessment pipeline ───────────────────────────────────────────
@@ -58,88 +59,145 @@ A companion **Log Distance Evaluation** tool (third-party metrics) is also inclu
 │   ├── calculate_granular_simulation_quality.r     # Per-activity & per-resource-activity quality
 │   ├── calculate_per_activity_simulation_quality.r # Per-resource-activity detailed scores
 │   ├── calculate_gateway_branching.r               # Routing / branching probability quality
-│   ├── cascading_quality_assessment.r              # Sequential (cascading) 
-
-
-
+│   ├── cascading_quality_assessment.r              # Sequential (cascading) quality mode
+│   │
+│   │   Documentation
+│   ├── DOCUMENTATION.md         # Technical documentation of R scripts
+│   ├── README.md                # R-side readme
+│   └── daqapo.md                # Notes on the DaQAPO R package integration
+│
+│   └── daqapo_extension/        # Custom extensions to the DaQAPO package
+│       ├── main.r
+│       ├── imprecise_timestamp.r
+│       ├── imprecise_resource.r
+│       ├── incorrect_case.r
+│       ├── resource_activity_mismatch.r
+│       ├── resource_inconsistency.r
+│       ├── same_timestamp.r
+│       ├── synonymous_label.r
+│       └── test_main.r
 │
 │  ── Log distance (third-party) ─────────────────────────────────────────────
 ├── log_distance/                # ⚠ NOT the author's work — see README inside
 │   ├── README.md                # Attribution: Camargo et al., PeerJ CS 2021
 │   ├── __init__.py
 │   ├── config.py                # EventLogIDs dataclass, DistanceMetric enum
-│   ├── earth_movers_distance.py # EMD helper used by other modules
+│   ├── earth_movers_distance.py # EMD helper
 │   ├── n_gram_distribution.py   # Bigram / Trigram distribution distance
-│   ├── absolute_event_distribution.py      # Absolute event EMD / Wasserstein
-│   ├── relative_event_distribution.py      # Relative event EMD / Wasserstein
-│   ├── case_arrival_distribution.py        # Case arrival EMD / Wasserstein
-│   ├── cycle_time_distribution.py          # Cycle time Wasserstein
-│   ├── circadian_event_distribution.py     # Circadian event distance
-│   ├── circadian_workforce_distribution.py # Circadian workforce distance
-│   ├── work_in_progress.py                 # Work-in-progress distance
-│   ├── remaining_time_distribution.py      # Remaining time distribution
-│   └── control_flow_log_distance.py        # Control-Flow Log Distance (CFLD, slow)
+│   ├── absolute_event_distribution.py
+│   ├── relative_event_distribution.py
+│   ├── case_arrival_distribution.py
+│   ├── cycle_time_distribution.py
+│   ├── circadian_event_distribution.py
+│   ├── circadian_workforce_distribution.py
+│   ├── work_in_progress.py
+│   ├── remaining_time_distribution.py
+│   └── control_flow_log_distance.py    # Control-Flow Log Distance (CFLD, slow)
 │
 │  ── Evaluation utilities ───────────────────────────────────────────────────
 ├── evaluation_utils/
 │   ├── __init__.py
-│   ├── log_distance_runner.py   # Runs all log-distance metrics, exports Excel
-│   ├── log_distance_gui.py      # Tkinter GUI for the log distance tool
-│   ├── core.py                  # (Legacy — unused placeholder)
-│   ├── SimulationParameters_Summary.xlsx   # Reference summary for BPS parameters
+│   ├── log_distance_runner.py              # Runs all log-distance metrics, exports Excel
+│   ├── log_distance_gui.py                 # Tkinter GUI for the log distance tool
+│   ├── core.py                             # (Legacy — unused placeholder)
 │   │
-│   └── Datasets/                # Synthetic event logs for evaluation / testing
-│       ├── generate_synthetic_logs.py       # Script used to generate the datasets
-│       ├── datasetwith1000cases_clean.csv   # Clean baseline log (1 000 cases)
-│       │
-│       │   Activity Label degradation datasets
-│       ├── datasetwith1000cases_ActivityLabel_Accuracy_5%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Accuracy_10%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Accuracy_20%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Completeness_5%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Completeness_10%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Completeness_20%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Consistency_5%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Consistency_10%.csv
-│       ├── datasetwith1000cases_ActivityLabel_Consistency_20%.csv
-│       │
-│       │   Case ID degradation datasets
-│       ├── datasetwith1000cases_CaseID_Accuracy_5%.csv
-│       ├── datasetwith1000cases_CaseID_Accuracy_10%.csv
-│       ├── datasetwith1000cases_CaseID_Accuracy_20%.csv
-│       ├── datasetwith1000cases_CaseID_Completeness_5%.csv
-│       ├── datasetwith1000cases_CaseID_Completeness_10%.csv
-│       ├── datasetwith1000cases_CaseID_Completeness_20%.csv
-│       │
-│       │   Resource degradation datasets
-│       ├── datasetwith1000cases_Resource_Accuracy_5%.csv
-│       ├── datasetwith1000cases_Resource_Accuracy_10%.csv
-│       ├── datasetwith1000cases_Resource_Accuracy_20%.csv
-│       ├── datasetwith1000cases_Resource_Completeness_5%.csv
-│       ├── datasetwith1000cases_Resource_Completeness_10%.csv
-│       ├── datasetwith1000cases_Resource_Completeness_20%.csv
-│       ├── datasetwith1000cases_Resource_Consistency_5%.csv
-│       ├── datasetwith1000cases_Resource_Consistency_10%.csv
-│       ├── datasetwith1000cases_Resource_Consistency_20%.csv
-│       │
-│       │   Timestamp degradation datasets
-│       ├── datasetwith1000cases_Timestamp_Accuracy_5%.csv
-│       ├── datasetwith1000cases_Timestamp_Accuracy_10%.csv
-│       ├── datasetwith1000cases_Timestamp_Accuracy_20%.csv
-│       ├── datasetwith1000cases_Timestamp_Completeness_5%.csv
-│       ├── datasetwith1000cases_Timestamp_Completeness_10%.csv
-│       ├── datasetwith1000cases_Timestamp_Completeness_20%.csv
-│       ├── datasetwith1000cases_Timestamp_Consistency_5%.csv
-│       ├── datasetwith1000cases_Timestamp_Consistency_10%.csv
-│       ├── datasetwith1000cases_Timestamp_Consistency_20%.csv
-│       │
-│       └── BPI challange 2012/
-│           └── BPIChallenge2017.csv         # Real-world log (BPI Challenge 2017)
+│   │   Summary results
+│   ├── SimulationParameters_Summary_Hospital.xlsx      # Quality + LD results — Hospital log
+│   ├── Simulation_Parameters_Summary_LoanApplication.xlsx  # Quality + LD results — Loan Application log
+│   │
+│   │   Hospital process datasets (synthetic, 1 000 cases)
+│   ├── HospitalDatasets/
+│   │   ├── generate_synthetic_logs.py      # Script that generated these datasets
+│   │   ├── datasetwith1000cases_clean.csv  # Clean baseline (no noise)
+│   │   │
+│   │   │   Activity Label degradation (5 / 10 / 20 %)
+│   │   ├── datasetwith1000cases_ActivityLabel_Accuracy_5%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Accuracy_10%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Accuracy_20%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Completeness_5%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Completeness_10%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Completeness_20%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Consistency_5%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Consistency_10%.csv
+│   │   ├── datasetwith1000cases_ActivityLabel_Consistency_20%.csv
+│   │   │
+│   │   │   Case ID degradation
+│   │   ├── datasetwith1000cases_CaseID_Accuracy_5%.csv
+│   │   ├── datasetwith1000cases_CaseID_Accuracy_10%.csv
+│   │   ├── datasetwith1000cases_CaseID_Accuracy_20%.csv
+│   │   ├── datasetwith1000cases_CaseID_Completeness_5%.csv
+│   │   ├── datasetwith1000cases_CaseID_Completeness_10%.csv
+│   │   ├── datasetwith1000cases_CaseID_Completeness_20%.csv
+│   │   │
+│   │   │   Resource degradation
+│   │   ├── datasetwith1000cases_Resource_Accuracy_5%.csv
+│   │   ├── datasetwith1000cases_Resource_Accuracy_10%.csv
+│   │   ├── datasetwith1000cases_Resource_Accuracy_20%.csv
+│   │   ├── datasetwith1000cases_Resource_Completeness_5%.csv
+│   │   ├── datasetwith1000cases_Resource_Completeness_10%.csv
+│   │   ├── datasetwith1000cases_Resource_Completeness_20%.csv
+│   │   ├── datasetwith1000cases_Resource_Consistency_5%.csv
+│   │   ├── datasetwith1000cases_Resource_Consistency_10%.csv
+│   │   ├── datasetwith1000cases_Resource_Consistency_20%.csv
+│   │   │
+│   │   │   Timestamp degradation
+│   │   ├── datasetwith1000cases_Timestamp_Accuracy_5%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Accuracy_10%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Accuracy_20%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Completeness_5%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Completeness_10%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Completeness_20%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Consistency_5%.csv
+│   │   ├── datasetwith1000cases_Timestamp_Consistency_10%.csv
+│   │   └── datasetwith1000cases_Timestamp_Consistency_20%.csv
+│   │
+│   │   Loan Application datasets (BPI Challenge 2017 process structure)
+│   ├── LoanApplication/
+│   │   ├── datasetwith1000cases_clean.csv  # Clean baseline (no noise)
+│   │   │
+│   │   │   Same attribute / dimension degradations as HospitalDatasets (5 / 10 / 20 %)
+│   │   ├── datasetwith1000cases_ActivityLabel_Accuracy_5%.csv  ... (×3)
+│   │   ├── datasetwith1000cases_ActivityLabel_Completeness_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_ActivityLabel_Consistency_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_CaseID_Accuracy_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_CaseID_Completeness_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_Resource_Accuracy_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_Resource_Completeness_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_Resource_Consistency_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_Timestamp_Accuracy_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_Timestamp_Completeness_5%.csv ... (×3)
+│   │   ├── datasetwith1000cases_Timestamp_Consistency_5%.csv ... (×3)
+│   │   │
+│   │   │   Combined degradation (all attributes simultaneously)
+│   │   ├── datasetwith1000cases_Combined_5%.csv
+│   │   ├── datasetwith1000cases_Combined_10%.csv
+│   │   ├── datasetwith1000cases_Combined_20%.csv
+│   │   │
+│   │   │   Large-scale datasets (3 000 cases, all dimensions degraded)
+│   │   ├── datasetwith3000cases_ActivityLabel_AllDimensions_5%.csv
+│   │   ├── datasetwith3000cases_ActivityLabel_AllDimensions_10%.csv
+│   │   ├── datasetwith3000cases_ActivityLabel_AllDimensions_20%.csv
+│   │   ├── datasetwith3000cases_CaseID_AllDimensions_5%.csv
+│   │   ├── datasetwith3000cases_CaseID_AllDimensions_10%.csv
+│   │   ├── datasetwith3000cases_CaseID_AllDimensions_20%.csv
+│   │   ├── datasetwith3000cases_Resource_AllDimensions_5%.csv
+│   │   ├── datasetwith3000cases_Resource_AllDimensions_10%.csv
+│   │   ├── datasetwith3000cases_Resource_AllDimensions_20%.csv
+│   │   ├── datasetwith3000cases_Timestamp_AllDimensions_5%.csv
+│   │   ├── datasetwith3000cases_Timestamp_AllDimensions_10%.csv
+│   │   ├── datasetwith3000cases_Timestamp_AllDimensions_20%.csv
+│   │   │
+│   │   └── output.xlsx      # Log distance computation results for this dataset
+│   │
+│   │   Real-world log
+│   └── BPI challange 2012/
+│       └── BPIChallenge2017.csv     # BPI Challenge 2017 real-world event log
 │
 │  ── Output ─────────────────────────────────────────────────────────────────
-└── Output/                      # All Excel results are saved here (auto-created)
+└── Output/                      # All Excel results saved here (auto-created, not tracked by git)
 ```
 
+> **Note:** `refector.py` at the root is a legacy file from before the refactor — it is not used and can be ignored.
 
 ---
 
@@ -210,14 +268,14 @@ python run_log_distance.py
 ```
 
 1. Click **Browse...** → select the **original** (real) event log CSV.
-2. Click **Add files...** → add one or more **simulated** event log CSVs.
-3. Click **Run Log Distance Analysis** → results are saved to `Output/`.
+2. Click **Add files...** → add one or more **simulated / degraded** event log CSVs.
+3. Click **Run Log Distance Analysis** → results saved to `Output/`.
 
 ---
 
 ## Output
 
-### Quality Assessment — three Excel files per log
+### Quality Assessment — up to three Excel files per log
 
 | File | Contents |
 |------|----------|
@@ -232,6 +290,13 @@ A raw R log (`r_run.log`) is saved next to the input CSV for debugging.
 | File | Contents |
 |------|----------|
 | `Log Distance - <original_log>.xlsx` | **Distance Metrics** sheet: one row per simulated log, columns = all metrics; **BPS Parameter Mapping** sheet: which metric corresponds to which BPS parameter |
+
+### Pre-computed summary tables (in `evaluation_utils/`)
+
+| File | Contents |
+|------|----------|
+| `SimulationParameters_Summary_Hospital.xlsx` | Quality scores + log distance metrics for all Hospital process degradation datasets |
+| `Simulation_Parameters_Summary_LoanApplication.xlsx` | Quality scores + log distance metrics for all Loan Application degradation datasets |
 
 ---
 
@@ -258,26 +323,47 @@ OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Output")   # change this path
 
 ### Log Distance pipeline
 
-1. **Column auto-detection**: reuses the same `column_detector.py` to map CSV headers to `EventLogIDs`.
+1. **Column auto-detection**: reuses `column_detector.py` to map CSV headers to `EventLogIDs`.
 2. **Metric computation** (`evaluation_utils/log_distance_runner.py`): runs 13 distance metrics from the third-party `log_distance` package (Camargo et al., 2021).
-3. **Export**: results are written to `Output/Log Distance - <name>.xlsx` with a BPS parameter mapping reference sheet.
+3. **Export**: results written to `Output/Log Distance - <name>.xlsx` with a BPS parameter mapping reference sheet.
 
 ---
 
 ## Evaluation Datasets
 
-The `evaluation_utils/Datasets/` folder contains synthetic degraded logs derived from a clean baseline of 1 000 cases.  
-Each CSV introduces a controlled quality issue in one attribute at three degradation levels (5 %, 10 %, 20 %):
+Two process domains are evaluated, each with the same degradation structure.
 
-| Attribute | Dimensions degraded |
-|-----------|-------------------|
-| Activity Label | Accuracy, Completeness, Consistency |
-| Case ID | Accuracy, Completeness |
-| Resource | Accuracy, Completeness, Consistency |
-| Timestamp | Accuracy, Completeness, Consistency |
+### Hospital Process (`HospitalDatasets/`)
 
-These logs are used to evaluate how changes in event-log quality affect BPS simulation parameters.  
-`generate_synthetic_logs.py` contains the script that generated them.
+Synthetic logs based on a simple 5-activity hospital care process (Registration → Diagnosis → Lab Test → X-Ray → Treatment).  
+Generated by `HospitalDatasets/generate_synthetic_logs.py`.
+
+| Attribute | Dimensions degraded | Noise levels |
+|-----------|-------------------|-------------|
+| Activity Label | Accuracy, Completeness, Consistency | 5 %, 10 %, 20 % |
+| Case ID | Accuracy, Completeness | 5 %, 10 %, 20 % |
+| Resource | Accuracy, Completeness, Consistency | 5 %, 10 %, 20 % |
+| Timestamp | Accuracy, Completeness, Consistency | 5 %, 10 %, 20 % |
+
+**36 CSV files** (34 degraded + 1 clean baseline) — 1 000 cases each.
+
+### Loan Application Process (`LoanApplication/`)
+
+Synthetic logs based on the BPI Challenge 2017 loan application process structure.
+
+| Dataset group | Count | Description |
+|---|---|---|
+| Single-attribute degradation | 33 CSVs | Same 11 attribute–dimension combinations as Hospital × 3 noise levels |
+| Combined degradation | 3 CSVs | All attributes degraded simultaneously at 5 / 10 / 20 % |
+| Large-scale (3 000 cases) | 12 CSVs | All 4 attributes × all dimensions degraded, at 5 / 10 / 20 % |
+| Clean baseline | 1 CSV | No noise |
+| Log distance results | `output.xlsx` | Computed distances between clean and all degraded logs |
+
+**50 files** total.
+
+### Real-world log (`BPI challange 2012/`)
+
+`BPIChallenge2017.csv` — the BPI Challenge 2017 real-world loan application event log, used to validate findings from synthetic experiments.
 
 ---
 
