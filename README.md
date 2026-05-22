@@ -10,7 +10,7 @@ A companion **Log Distance Evaluation** tool (third-party metrics) is also inclu
 ## Project Structure
 
 ```
-refector_tool_clean/
+/
 │
 │  ── Entry points ──────────────────────────────────────────────────────────
 ├── main.py                      # Launch the quality assessment GUI
@@ -58,23 +58,10 @@ refector_tool_clean/
 │   ├── calculate_granular_simulation_quality.r     # Per-activity & per-resource-activity quality
 │   ├── calculate_per_activity_simulation_quality.r # Per-resource-activity detailed scores
 │   ├── calculate_gateway_branching.r               # Routing / branching probability quality
-│   ├── cascading_quality_assessment.r              # Sequential (cascading) quality mode
-│   │
-│   │   Documentation
-│   ├── DOCUMENTATION.md         # Technical documentation of R scripts
-│   ├── README.md                # R-side readme
-│   └── daqapo.md                # Notes on the DaQAPO R package integration
-│
-│   └── daqapo_extension/        # Custom extensions to the DaQAPO package
-│       ├── main.r               # Extension orchestrator
-│       ├── imprecise_timestamp.r
-│       ├── imprecise_resource.r
-│       ├── incorrect_case.r
-│       ├── resource_activity_mismatch.r
-│       ├── resource_inconsistency.r
-│       ├── same_timestamp.r
-│       ├── synonymous_label.r
-│       └── test_main.r
+│   ├── cascading_quality_assessment.r              # Sequential (cascading) 
+
+
+
 │
 │  ── Log distance (third-party) ─────────────────────────────────────────────
 ├── log_distance/                # ⚠ NOT the author's work — see README inside
@@ -153,7 +140,6 @@ refector_tool_clean/
 └── Output/                      # All Excel results are saved here (auto-created)
 ```
 
-> **Note:** `refector.py` at the root is a legacy file from before the refactor — it is not used and can be ignored.
 
 ---
 
