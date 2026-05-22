@@ -1,0 +1,13 @@
+# Python dependencies for the Event Log Quality Assessment tool
+# Install with: pip install -r requirements.txt
+# Note: tkinter and subprocess are part of the Python standard library (no install needed).
+
+# Core quality assessment
+pandas>=2.0
+openpyxl>=3.1
+
+# Log distance evaluation (run_log_distance.py)
+# Third-party: log-distance-measures (Camargo et al., 2021)
+jellyfish>=0.9      # Damerau-Levenshtein for control-flow distance
+scipy>=1.10         # Wasserstein distance
+pulp>=2.7           # Earth Mover's Distance (linear programming solver)
