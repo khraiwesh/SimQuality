@@ -197,7 +197,6 @@ A companion **Log Distance Evaluation** tool (third-party metrics) is also inclu
 └── Output/                      # All Excel results saved here (auto-created, not tracked by git)
 ```
 
-> **Note:** `refector.py` at the root is a legacy file from before the refactor — it is not used and can be ignored.
 
 ---
 
