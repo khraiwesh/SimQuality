@@ -191,7 +191,7 @@ A companion **Log Distance Evaluation** tool (third-party metrics) is also inclu
 │   │
 │   │   Real-world log
 │   └── BPI challange 2012/
-│       └── BPIChallenge2017.csv     # BPI Challenge 2017 real-world event log
+│       └── BPIChallenge2012.csv     # BPI Challenge 2012 real-world event log
 │
 │  ── Output ─────────────────────────────────────────────────────────────────
 └── Output/                      # All Excel results saved here (auto-created, not tracked by git)
@@ -362,7 +362,7 @@ Synthetic logs based on the BPI Challenge 2017 loan application process structur
 
 ### Real-world log (`BPI challange 2012/`)
 
-`BPIChallenge2017.csv` — the BPI Challenge 2017 real-world loan application event log, used to validate findings from synthetic experiments.
+`BPIChallenge2012.csv` — the BPI Challenge 2017 real-world loan application event log, used to validate findings from synthetic experiments.
 
 ---
 
